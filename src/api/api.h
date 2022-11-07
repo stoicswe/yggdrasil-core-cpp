@@ -5,23 +5,24 @@
 
 namespace api
 {
-    class BlockchainController : public oatpp::web::server::api::ApiController 
+    class BlockchainService
+    {
+    public:
+        BlockchainService() = default;
+
+    };
+
+    class BlockchainController : public oatpp::web::server::api::ApiController
     {
         public:
             BlockchainController() = default;
             virtual ~BlockchainController() = default;
-            BlockchainController(OATPP_COMPONENT(std::shared_ptr<ObjectMapper>, objectMapper)
+
+            BlockchainController(OATPP_COMPONENT(std::shared_ptr<ObjectMapper> objectMapper))
                 : oatpp::web::server::api::ApiController(objectMapper)
             {}
 
             std::shared_ptr<BlockchainService> m_blockChainService;
-    };
-
-    class BlockchainService
-    {
-        public:
-            BlockchainService() = default
-            
     };
 }
 
