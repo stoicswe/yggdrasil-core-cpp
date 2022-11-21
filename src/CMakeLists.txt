@@ -3,6 +3,9 @@ project(yggdrasil-core)
 
 add_subdirectory(api)
 
-set(ygg_source_files program.cpp)
+set(ygg_source_files 
+    AppComponent.h 
+    Program.cpp
+)
 add_executable(ygg-core ${ygg_source_files})
 target_link_libraries(ygg-core ${CONAN_LIBS})
