@@ -2,6 +2,7 @@
 .vscode
 # Ignore the build folder
 build
+build-vs-proj
 # Ignore CLion folders
 .idea
 cmake-build-debug
