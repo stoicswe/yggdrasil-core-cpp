@@ -1,6 +1,6 @@
 #pragma once
-#ifndef AppComponent
-#define AppComponent
+#ifndef AppComponent_h
+#define AppComponent_h
 
 #include "oatpp/web/server/AsyncHttpConnectionHandler.hpp"
 #include "oatpp/web/server/HttpRouter.hpp"
@@ -68,4 +68,4 @@ public:
 
 };
 
-#endif /* AppComponent */
+#endif /* AppComponent_h */
