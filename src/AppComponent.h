@@ -1,6 +1,6 @@
 #pragma once
-#ifndef AppComponent_hpp
-#define AppComponent_hpp
+#ifndef AppComponent
+#define AppComponent
 
 #include "oatpp/web/server/AsyncHttpConnectionHandler.hpp"
 #include "oatpp/web/server/HttpRouter.hpp"
@@ -18,11 +18,11 @@
 * the OATPP team as a sample project to explain the implementation of the oatpp rest framework ih C++ code.
 */
 class AppComponent {
+    
 public:
-
     /**
-     * Create Async Executor
-     */
+        * Create Async Executor
+        */
     OATPP_CREATE_COMPONENT(std::shared_ptr<oatpp::async::Executor>, executor)([] {
         return std::make_shared<oatpp::async::Executor>(
             9 /* Data-Processing threads */,
@@ -32,23 +32,23 @@ public:
         }());
 
     /**
-     *  Create ConnectionProvider component which listens on the port
-     */
+        *  Create ConnectionProvider component which listens on the port
+        */
     OATPP_CREATE_COMPONENT(std::shared_ptr<oatpp::network::ServerConnectionProvider>, serverConnectionProvider)([] {
         /* non_blocking connections should be used with AsyncHttpConnectionHandler for AsyncIO */
         return oatpp::network::tcp::server::ConnectionProvider::createShared({ "0.0.0.0", 8000, oatpp::network::Address::IP_4 });
         }());
 
     /**
-     *  Create Router component
-     */
+        *  Create Router component
+        */
     OATPP_CREATE_COMPONENT(std::shared_ptr<oatpp::web::server::HttpRouter>, httpRouter)([] {
         return oatpp::web::server::HttpRouter::createShared();
         }());
 
     /**
-     *  Create ConnectionHandler component which uses Router component to route requests
-     */
+        *  Create ConnectionHandler component which uses Router component to route requests
+        */
     OATPP_CREATE_COMPONENT(std::shared_ptr<oatpp::network::ConnectionHandler>, serverConnectionHandler)([] {
         OATPP_COMPONENT(std::shared_ptr<oatpp::web::server::HttpRouter>, router); // get Router component
     OATPP_COMPONENT(std::shared_ptr<oatpp::async::Executor>, executor); // get Async executor component
@@ -56,8 +56,8 @@ public:
         }());
 
     /**
-     *  Create ObjectMapper component to serialize/deserialize DTOs in Contoller's API
-     */
+        *  Create ObjectMapper component to serialize/deserialize DTOs in Contoller's API
+        */
     OATPP_CREATE_COMPONENT(std::shared_ptr<oatpp::data::mapping::ObjectMapper>, apiObjectMapper)([] {
         auto serializerConfig = oatpp::parser::json::mapping::Serializer::Config::createShared();
     auto deserializerConfig = oatpp::parser::json::mapping::Deserializer::Config::createShared();
@@ -68,4 +68,4 @@ public:
 
 };
 
-#endif /* AppComponent_hpp */
+#endif /* AppComponent */
