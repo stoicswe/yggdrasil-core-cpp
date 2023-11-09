@@ -6,7 +6,7 @@ then
   then
     rm -rf ./cmake-build-debug
     mkdir ./cmake-build-debug
-    conan install . -s build_type=Debug --install-folder=cmake-build-debug
+    conan install . -s build_type=Debug --output-folder=cmake-build-debug
     #cd ./cmake-build-debug
   else
     echo "Debug build clean."
@@ -16,7 +16,7 @@ then
   then
     rm -rf ./cmake-build-release
     mkdir ./cmake-build-release
-    conan install . -s build_type=Release --install-folder=cmake-build-release
+    conan install . -s build_type=Release --output-folder=cmake-build-release
     cd ./cmake-build-release
   else
     echo "Release build clean."

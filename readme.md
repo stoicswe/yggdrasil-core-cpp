@@ -16,7 +16,7 @@ Option+A768
 In order to run this project, you will need:
 ```
 C++23
-CONAN
+CONAN2
 CMAKE
 ```
 ### Building
